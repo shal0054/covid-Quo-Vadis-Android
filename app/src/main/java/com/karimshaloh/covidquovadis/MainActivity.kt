@@ -45,16 +45,17 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-val maxCapacity = 10
+val maxCapacity = 5
 
 @Composable
-fun Display(modifier: Modifier) {
+fun Display(modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Title()
+        MyImage()
         CountingWidget()
         RoomCapacity()
     }
@@ -69,18 +70,23 @@ fun Title() {
 }
 
 @Composable
+fun MyImage() {
+    
+}
+
+@Composable
 fun CountingWidget() {
     var count by remember { mutableStateOf(0) }
     val context = LocalContext.current
     val zeroToast =
         Toast.makeText(context, "There's no one left in the room!", Toast.LENGTH_LONG)
     val maxToast =
-        Toast.makeText(context, "There's no one left in the room!", Toast.LENGTH_LONG)
+        Toast.makeText(context, "Room is at capacity!", Toast.LENGTH_LONG)
+
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 24.dp),
+        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceAround
+
     ) {
         Button(onClick = {
             if (count == 0) {
@@ -91,10 +97,7 @@ fun CountingWidget() {
         }) {
             Text("- 1", fontSize = 36.sp)
         }
-        Text(
-            text = "$count",
-            fontSize = 48.sp
-        )
+        Text("$count", fontSize = 48.sp)
         Button(onClick = {
             if (count == maxCapacity) {
                 maxToast.show()
@@ -113,7 +116,7 @@ fun RoomCapacity() {
         text = "The maximum room capacity is $maxCapacity",
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp,
-        modifier = Modifier.padding(bottom = 24.dp)
+        modifier = Modifier.padding(bottom = 36.dp)
     )
 }
 
@@ -121,6 +124,6 @@ fun RoomCapacity() {
 @Composable
 fun GreetingPreview() {
     CovidQuoVadisTheme {
-        Display(modifier = Modifier)
+        Display()
     }
 }
