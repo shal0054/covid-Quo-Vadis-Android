@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,8 +22,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -64,7 +67,9 @@ fun Display(modifier: Modifier = Modifier) {
 fun Title() {
     Text(
         text = stringResource(R.string.app_name),
-        modifier = Modifier.padding(top = 24.dp)
+        modifier = Modifier.padding(top = 24.dp),
+        fontSize = 46.sp,
+        fontStyle = FontStyle.Italic
     )
 }
 
@@ -80,7 +85,6 @@ fun CountingWidget() {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceAround
-
     ) {
         Button(onClick = {
             if (count == 0) {
@@ -108,9 +112,9 @@ fun CountingWidget() {
 fun RoomCapacity() {
     Text(
         text = "The maximum room capacity is $maxCapacity",
-        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(bottom = 36.dp),
         fontSize = 18.sp,
-        modifier = Modifier.padding(bottom = 36.dp)
+        fontWeight = FontWeight.Bold
     )
 }
 
