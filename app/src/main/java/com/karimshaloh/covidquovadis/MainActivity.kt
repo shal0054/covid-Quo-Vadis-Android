@@ -55,7 +55,6 @@ fun Display(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Title()
-        MyImage()
         CountingWidget()
         RoomCapacity()
     }
@@ -67,11 +66,6 @@ fun Title() {
         text = stringResource(R.string.app_name),
         modifier = Modifier.padding(top = 24.dp)
     )
-}
-
-@Composable
-fun MyImage() {
-    
 }
 
 @Composable
